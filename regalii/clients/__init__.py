@@ -79,7 +79,7 @@ class Request(object):
         proxies = self.build_proxy()
 
         logger.debug('GET - URL: %s' % uri)
-        logger.debug('Headers: %s' % uri)
+        logger.debug('Headers: %s' % headers)
         if proxies:
             logger.debug('Proxies: %s' % proxies)
         response = requests.get(uri,
@@ -99,7 +99,7 @@ class Request(object):
 
         logger.debug('POST - URL %s' % uri)
         logger.debug('Body %s', body)
-        logger.debug('Headers %s' % uri)
+        logger.debug('Headers %s' % headers)
         if proxies:
             logger.debug('Proxies %s' % proxies)
         response = requests.post(uri,
@@ -120,7 +120,7 @@ class Request(object):
 
         logger.debug('POST - URL %s' % uri)
         logger.debug('Body %s', body)
-        logger.debug('Headers %s' % uri)
+        logger.debug('Headers %s' % headers)
         if proxies:
             logger.debug('Proxies %s' % proxies)
         response = requests.patch(uri,
