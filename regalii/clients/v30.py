@@ -54,6 +54,9 @@ class Client(object):
             return self.request('/rates/history').get()
 
     class Transaction(EndPoint):
+        def create(self, params=None):
+            return self.request('/transactions', params).post()
+
         def list(self, params=None):
             return self.request('/transactions', params).get()
 
