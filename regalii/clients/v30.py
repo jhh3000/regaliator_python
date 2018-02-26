@@ -46,6 +46,9 @@ class Client(object):
         def utilities(self, params=None):
             return self.request('/billers/utilities', params).get()
 
+        def rpps(self, params=None):
+            return self.request('/rpps_billers', params).get()
+
     class Rate(EndPoint):
         def list(self):
             return self.request('/rates').get()
