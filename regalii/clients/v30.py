@@ -60,6 +60,9 @@ class Client(object):
         def create(self, params=None):
             return self.request('/transactions', params).post()
 
+        def show(self, id):
+            return self.request('/transactions/{id}'.format(id=id)).get()
+
         def list(self, params=None):
             return self.request('/transactions', params).get()
 
