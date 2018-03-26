@@ -46,6 +46,9 @@ class Client(object):
         def utilities(self, params=None):
             return self.request('/billers/utilities', params).get()
 
+        def rpps(self, params=None):
+            return self.request('/rpps_billers', params).get()
+
     class Rate(EndPoint):
         def list(self):
             return self.request('/rates').get()
@@ -54,6 +57,12 @@ class Client(object):
             return self.request('/rates/history').get()
 
     class Transaction(EndPoint):
+        def create(self, params=None):
+            return self.request('/transactions', params).post()
+
+        def show(self, id):
+            return self.request('/transactions/{id}'.format(id=id)).get()
+
         def list(self, params=None):
             return self.request('/transactions', params).get()
 
