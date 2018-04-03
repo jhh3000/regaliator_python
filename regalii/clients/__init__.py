@@ -112,6 +112,27 @@ class Request(object):
 
         return Response(response)
 
+    def delete(self):
+        uri = self.build_uri()
+        body = json.dumps(self.params) if self.params else ''
+        headers = self.build_header(self.endpoint, body)
+        proxies = self.build_proxy()
+
+        logger.debug('DELETE - URL %s' % uri)
+        logger.debug('Body %s', body)
+        logger.debug('Headers %s' % headers)
+        if proxies:
+            logger.debug('Proxies %s' % proxies)
+        response = requests.delete(uri,
+                                 data=body,
+                                 headers=headers,
+                                 proxies=proxies,
+                                 timeout=self.config.timeout)
+        logger.debug('Response Status: %s' % response.status_code)
+        logger.debug('Response: %s' % response.text)
+
+        return Response(response)
+
     def patch(self):
         uri = self.build_uri()
         body = json.dumps(self.params) if self.params else ''

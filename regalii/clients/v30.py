@@ -63,6 +63,9 @@ class Client(object):
         def show(self, id):
             return self.request('/transactions/{id}'.format(id=id)).get()
 
+        def delete(self, id):
+            return self.request('/transactions/{id}'.format(id=id)).delete()
+
         def list(self, params=None):
             return self.request('/transactions', params).get()
 
